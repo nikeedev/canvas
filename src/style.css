@@ -1,0 +1,22 @@
+#canvas {
+    border: 1px solid black;
+
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    
+}
+
+
+img, #circle {
+    display: none;
+}
+
+/*
+html {
+    background-color: #5d73f0;
+}
+*/
+
+
