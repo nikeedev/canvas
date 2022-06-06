@@ -1,9 +1,5 @@
 #canvas {
     border: 1px solid black;
-<<<<<<< HEAD
-=======
-
->>>>>>> 0ee1ad3fcf46f6be2f8a885da2325c7e66fc198f
     image-rendering: -moz-crisp-edges;
     image-rendering: -webkit-crisp-edges;
     image-rendering: pixelated;
@@ -11,22 +7,9 @@
     
 }
 
-<<<<<<< HEAD
 html {
     background-color: #5d73f0;
 }
 
-=======
-
-img, #circle {
-    display: none;
-}
-
-/*
-html {
-    background-color: #5d73f0;
-}
-*/
->>>>>>> 0ee1ad3fcf46f6be2f8a885da2325c7e66fc198f
 
 
