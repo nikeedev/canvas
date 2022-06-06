@@ -31,13 +31,9 @@ function init() {
     return setInterval(draw, 10);
 }
 
-<<<<<<< HEAD
-function doKeyDown(evt){
-=======
 
 function doKeyDown(evt){
 
->>>>>>> 0ee1ad3fcf46f6be2f8a885da2325c7e66fc198f
     switch (evt.keyCode) {
         case 38:  
             if (y - dy > 0){
@@ -45,11 +41,7 @@ function doKeyDown(evt){
             }
             break;
         case 40: 
-<<<<<<< HEAD
-            if (y + dy < height - size){
-=======
             if (y + dy < height - image.width){
->>>>>>> 0ee1ad3fcf46f6be2f8a885da2325c7e66fc198f
                 y += dy;
             }
             break;
@@ -59,11 +51,7 @@ function doKeyDown(evt){
             }
             break;
         case 39:  
-<<<<<<< HEAD
-            if (x + dx < width - size){
-=======
             if (x + dx < width - image.height){
->>>>>>> 0ee1ad3fcf46f6be2f8a885da2325c7e66fc198f
                 x += dx;
             }
             break;
@@ -72,23 +60,10 @@ function doKeyDown(evt){
 
 
 function draw() {
-<<<<<<< HEAD
-    ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = "#5d73f0";
-    ctx.strokeStyle = "black";
-    
-    ctx.fillStyle = "white";
-    ctx.fillRect(x, y, size, size);
-=======
     
     ctx.clearRect(0, 0, width, height);
     ctx.drawImage(image, x, y);
->>>>>>> 0ee1ad3fcf46f6be2f8a885da2325c7e66fc198f
 }
 
 init();
 window.addEventListener('keydown',doKeyDown,true);
-<<<<<<< HEAD
-
-=======
->>>>>>> 0ee1ad3fcf46f6be2f8a885da2325c7e66fc198f
