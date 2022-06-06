@@ -6,64 +6,79 @@ import { Size } from "./modules/functions.js";
 const canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
-var image = document.getElementById("circle");
+
+var RectSize = new Size(20, 20);
+const width = 1200;
+const height = 400;
 
 
-
-var ImageSize = new Size(image.width/2, image.height/2);
-const width = 660;
-const height = 600;
+var x = width/2-RectSize.width/2;
+var y = height/2-RectSize.height/2;
 
 
-var x = width/2-ImageSize.width;
-var y = height/2-ImageSize.height;
-
-
-var dy = 5;
-var dx = 5;
-
-
-ctx.clearRect(0, 0, width, height);
-ctx.drawImage(image, x, y);
-
-
-function init() {
-    return setInterval(draw, 10);
+onload = () => {
+    window.requestAnimationFrame(gameLoop);
 }
 
 
-function doKeyDown(evt){
+let movingSpeed = 0.9;
+let secondsPassed;
+let oldTimeStamp;
+let fps;
 
-    switch (evt.keyCode) {
-        case 38:  
-            if (y - dy > 0){
-                y -= dy;
-            }
-            break;
-        case 40: 
-            if (y + dy < height - image.width){
-                y += dy;
-            }
-            break;
-        case 37: 
-            if (x - dx > 0){
-                x -= dx;
-            }
-            break;
-        case 39:  
-            if (x + dx < width - image.height){
-                x += dx;
-            }
-            break;
-    }
+function gameLoop(timeStamp) {
+
+    // Calculate the number of seconds passed since the last frame
+    secondsPassed = (timeStamp - oldTimeStamp) / 1000;
+    oldTimeStamp = timeStamp;
+
+    // Calculate fps
+    fps = Math.round(1 / secondsPassed);
+
+
+    // Perform the drawing operation
+    window.addEventListener('keydown', e => {
+        switch (e.keyCode) {
+            case 38:  
+                if (y > 0){
+                    y -= (movingSpeed * secondsPassed);
+                }
+                break;
+            case 40: 
+                if (y < height - RectSize.width){
+                    y += (movingSpeed * secondsPassed);
+                }
+                break;
+            case 37: 
+                if (x > 0){
+                    x -= (movingSpeed * secondsPassed);
+                }
+                break;
+            case 39:  
+                if (x < width - RectSize.height){
+                    x += (movingSpeed * secondsPassed);
+                }
+                break;
+        }
+    }, true);
+
+    draw();
+
+    // Draw number to the screen
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, 200, 100);
+    ctx.font = '25px Arial';
+    ctx.fillStyle = 'black';
+    ctx.fillText("FPS: " + fps, 10, 30);
+
+
+    // The loop function has reached it's end. Keep requesting new frames
+    window.requestAnimationFrame(gameLoop);
 }
 
 
-function draw() {
-    
+function draw() {   
     ctx.clearRect(0, 0, width, height);
-    ctx.drawImage(image, x, y);
+    ctx.fillRect(x, y, RectSize.width, RectSize.height);
 }
-
-init();
-window.addEventListener('keydown',doKeyDown,true);
+   
